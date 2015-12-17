@@ -1,7 +1,23 @@
-var gpio = require('rpi-gpio');
+// button is attaced to pin 17, led to 18
+var GPIO = require('onoff').Gpio,
+    led = new GPIO(18, 'out'),
+    button = new GPIO(17, 'in', 'both');
 
-gpio.on('change', function(channel, value) {
-    console.log('Channel ' + channel + ' value is now ' + value);
-});
+// define the callback function
+function light(err, state) {
 
-gpio.setup(17, gpio.DIR_IN, gpio.EDGE_BOTH);
+  // check the state of the button
+  // 1 == pressed, 0 == not pressed
+  if(state == 1) {
+    // turn LED on
+    led.writeSync(1);
+  } else {
+    // turn LED off
+    led.writeSync(0);
+  }
+
+}
+
+// pass the callback function to the
+// as the first argument to watch()
+button.watch(light);

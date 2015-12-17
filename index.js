@@ -3,7 +3,7 @@
  */
 
 try {
-    var gpio = require('rpi-gpio');
+    var gpio = require('onoff').Gpio;
 } catch(e) {
     console.error(e);
 }
@@ -16,16 +16,11 @@ module.exports = function(pubsub) {
     }
     console.log('loading gpio plugin');
 
-    gpio.on('change', function(channel, value) {
-        console.log('Channel ' + channel + ' value is now ' + value);
-        pubsub.publish('/openframe-gpio/17', value);
+    button = new gpio(17, 'in', 'both');
+
+    button.watch(function(err, state) {
+        if (err) console.log(err);
+        console.log(state);
+        pubsub.publish('/openframe-gpio/17', state);
     });
-
-    gpio.setup(17, gpio.DIR_IN, gpio.EDGE_BOTH);
-
-    // gpio.open(17, "input", function(err) {     // Open pin 16 for output
-    //     gpio.read(17, function(val) {          // Set pin 16 high (1)
-    //         pubsub.publish('/openframe-gpio/17', val);
-    //     });
-    // });
 };
