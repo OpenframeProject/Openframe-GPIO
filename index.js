@@ -16,7 +16,7 @@ module.exports = function(pubsub) {
     }
     console.log('loading gpio plugin');
 
-    button = new gpio(17, 'in', 'both');
+    var button = new gpio(17, 'in', 'both');
 
     button.watch(function(err, state) {
         if (err) console.log(err);
