@@ -23,6 +23,6 @@
   },
   "homepage": "https://github.com/jmwohl/Openframe-GPIO#readme",
   "dependencies": {
-    "pi-gpio": "0.0.7"
+    "rpi-gpio": "^0.7.0"
   }
 }
