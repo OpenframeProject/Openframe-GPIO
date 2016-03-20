@@ -33,7 +33,7 @@ extension.init = function(OF) {
      * See openframe.io/explorer for API docs, or openframe.io/explorer/swagger.json for the swagger definition
      * which shows the available methods as 'operationId'
      */
-    var rest = OF.rest;
+    var rest = OF.getRest();
 
     if (!gpio) {
         console.error('\n!!!\nGPIO Not available... is this an RPi?\n!!!\n');
