@@ -79,6 +79,8 @@ extension.init = function(OF) {
                 .catch(function(err) {
                     debug('ERROR: ', err);
                 });
+        }).catch(function(err) {
+            debug('ERROR: ', err);
         });
     }
 
