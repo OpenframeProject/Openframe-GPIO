@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/jmwohl/Openframe-GPIO#readme",
   "dependencies": {
+    "debug": "^2.2.0",
     "onoff": "^1.0.3"
   }
 }
