@@ -5,7 +5,7 @@
 // GPIO not available on all devices...
 try {
     var gpio = require('onoff').Gpio;
-} catch(e) {
+} catch (e) {
     console.error(e);
 }
 
@@ -35,6 +35,12 @@ extension.init = function(OF) {
      */
     var rest = OF.getRest();
 
+    /**
+     * Reference to the frame model wrapper, allowing plugin to update frame data.
+     * (frame.state is the model data)
+     */
+    var frame = OF.getFrame();
+
     if (!gpio) {
         console.error('\n!!!\nGPIO Not available... is this an RPi?\n!!!\n');
         return;
@@ -42,16 +48,37 @@ extension.init = function(OF) {
 
     var button = new gpio(17, 'in', 'both');
 
+    var fetching = false;
     button.watch(function(err, state) {
         if (err) console.log(err);
         console.log(state);
+        if (state === 1 && !fetching) {
+            getRandomFromCollection();
+        }
         // pubsub.publish('/openframe-gpio/17', state);
     });
 
-    rest.OpenframeUser.OpenframeUser_prototype_primary_collection({
-        id: 'current'
-    }).then(function(data) {
-        console.log(data);
-    });
+    function getRandomFromCollection() {
+        fetching = true;
+        // get the logged-in user's primary collection
+        rest.OpenframeUser.OpenframeUser_prototype_primary_collection({
+            id: 'current'
+        }).then(function(data) {
+            var artworkList = data.collection.artwork,
+                len = artworkList.length,
+                randomIdx = getRandomInt(0, len-1),
+                randomArtwork = artworkList(randomIdx);
+
+            frame.state._current_artwork = randomArtwork;
+            frame.save().then(function() {
+                fetching = false;
+            });
+        });
+    }
+
+    function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min)) + min;
+    }
+
 
 };
