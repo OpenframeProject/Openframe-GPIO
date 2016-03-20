@@ -23,6 +23,17 @@ var pjson = require('./package.json'),
 extension.init = function(OF) {
     // do your extension thing
     debug('=======>   Openframe-GPIO initialized!   <=======');
+    /**
+     * Extensions also have access to the global event system
+     */
+    var pubsub = OF.getPubsub();
+
+    /**
+     * Extensions also have access to the Swagger REST client (https://github.com/swagger-api/swagger-js)
+     * See openframe.io/explorer for API docs, or openframe.io/explorer/swagger.json for the swagger definition
+     * which shows the available methods as 'operationId'
+     */
+    var rest = OF.rest;
 
     if (!gpio) {
         console.error('\n!!!\nGPIO Not available... is this an RPi?\n!!!\n');
@@ -34,24 +45,13 @@ extension.init = function(OF) {
     button.watch(function(err, state) {
         if (err) console.log(err);
         console.log(state);
-        OF.pubsub.publish('/openframe-gpio/17', state);
+        // pubsub.publish('/openframe-gpio/17', state);
     });
 
-    OF.rest().OpenframeUser.OpenframeUser_prototype_primary_collection({
+    rest.OpenframeUser.OpenframeUser_prototype_primary_collection({
         id: 'current'
     }).then(function(data) {
         console.log(data);
     });
 
-    /**
-     * Extensions also have access to the global event system
-     */
-    extension.pubsub = OF.getPubsub();
-
-    /**
-     * Extensions also have access to the Swagger REST client (https://github.com/swagger-api/swagger-js)
-     * See openframe.io/explorer for API docs, or openframe.io/explorer/swagger.json for the swagger definition
-     * which shows the available methods as 'operationId'
-     */
-    extension.rest = OF.rest;
 };
