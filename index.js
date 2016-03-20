@@ -69,10 +69,16 @@ extension.init = function(OF) {
                 randomIdx = getRandomInt(0, len-1),
                 randomArtwork = artworkList(randomIdx);
 
+            debug(randomArtwork);
             frame.state._current_artwork = randomArtwork;
-            frame.save().then(function() {
-                fetching = false;
-            });
+            frame.save()
+                .then(function() {
+                    debug('Success...');
+                    fetching = false;
+                })
+                .catch(function(err) {
+                    debug('ERROR: ', err);
+                });
         });
     }
 
