@@ -67,7 +67,7 @@ extension.init = function(OF) {
             var artworkList = data.obj.collection.artwork,
                 len = artworkList.length,
                 randomIdx = getRandomInt(0, len-1),
-                randomArtwork = artworkList(randomIdx);
+                randomArtwork = artworkList[randomIdx];
 
             debug(randomArtwork);
             frame.state._current_artwork = randomArtwork;
