@@ -64,8 +64,7 @@ extension.init = function(OF) {
         rest.OpenframeUser.OpenframeUser_prototype_primary_collection({
             id: 'current'
         }).then(function(data) {
-            console.log(data);
-            var artworkList = data.collection.artwork,
+            var artworkList = data.obj.collection.artwork,
                 len = artworkList.length,
                 randomIdx = getRandomInt(0, len-1),
                 randomArtwork = artworkList(randomIdx);
