@@ -2,7 +2,7 @@
   "name": "openframe-gpio",
   "version": "0.1.0",
   "description": "An Openframe plugin which provides access to the GPIO pins",
-  "main": "index.js",
+  "main": "extension.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

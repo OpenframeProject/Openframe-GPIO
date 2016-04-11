@@ -49,6 +49,7 @@ extension.init = function(OF) {
     var button = new gpio(17, 'in', 'both');
 
     var fetching = false;
+
     button.watch(function(err, state) {
         if (err) console.log(err);
         console.log(state);
@@ -85,7 +86,7 @@ extension.init = function(OF) {
     }
 
     function getRandomInt(min, max) {
-        return Math.floor(Math.random() * (max - min)) + min;
+        return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
 
