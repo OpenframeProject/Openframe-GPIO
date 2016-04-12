@@ -1,14 +1,14 @@
 {
-  "name": "openframe-gpio",
+  "name": "openframe-gpioexample",
   "version": "0.1.0",
-  "description": "An Openframe plugin which provides access to the GPIO pins",
+  "description": "An Openframe plugin which uses GPIO to add a button which fetches a random artwork from the user's collection.",
   "main": "extension.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jmwohl/Openframe-GPIO.git"
+    "url": "git+https://github.com/jmwohl/Openframe-GPIOExample.git"
   },
   "keywords": [
     "openframe",
@@ -16,12 +16,21 @@
     "gpio",
     "rpio"
   ],
-  "author": "Jonathan Wohl",
+  "author": {
+    "name": "Jonathan Wohl",
+    "url": "http://jonathanwohl.com"
+  },
+  "contributors": [
+    {
+      "name": "Jonathan Wohl",
+      "url": "http://jonathanwohl.com"
+    }
+  ],
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/jmwohl/Openframe-GPIO/issues"
+    "url": "https://github.com/jmwohl/Openframe-GPIOExample/issues"
   },
-  "homepage": "https://github.com/jmwohl/Openframe-GPIO#readme",
+  "homepage": "https://github.com/jmwohl/Openframe-GPIOExample#readme",
   "dependencies": {
     "debug": "^2.2.0",
     "onoff": "^1.0.3"
