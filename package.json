@@ -13,9 +13,9 @@
   },
   "keywords": [
     "openframe",
-    "plugin",
+    "extension",
     "gpio",
-    "rpio"
+    "interface"
   ],
   "author": {
     "name": "Jonathan Wohl",
