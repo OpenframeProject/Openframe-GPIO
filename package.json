@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jmwohl/Openframe-GPIOExample.git"
+    "url": "git+https://github.com/openframe/Openframe-GPIOExample.git"
   },
   "keywords": [
     "openframe",
@@ -29,10 +29,11 @@
   ],
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/jmwohl/Openframe-GPIOExample/issues"
+    "url": "https://github.com/openframe/Openframe-GPIOExample/issues"
   },
-  "homepage": "https://github.com/jmwohl/Openframe-GPIOExample#readme",
+  "homepage": "https://github.com/openframe/Openframe-GPIOExample#readme",
   "dependencies": {
+    "openframe-extension": "^0.1.0",
     "debug": "^2.2.0",
     "onoff": "^1.0.3"
   }
