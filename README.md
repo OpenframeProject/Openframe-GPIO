@@ -1,5 +1,3 @@
-# Openframe-GPIO
-An example plugin which makes GPIO available to the frame controller.
+# Openframe-GPIOExample
 
-# TODO:
-- update to latest expected plugin structure
+An example plugin which uses GPIO input from a button to fetch a random artwork from the user's collection.
